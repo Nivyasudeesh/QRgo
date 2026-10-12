@@ -1082,4 +1082,24 @@ body {
     .color-controls {
         flex-direction: column;
     }
+    .type-selector{
+    display: grid;
+    grid-template-columns: repeat(3,calc((100vw/3) - 46px));
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    justify-content: center;
+    }
+    .shape-options{
+            display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+    }
 }
