@@ -19,7 +19,7 @@ self.addEventListener("activate", event => {
       .then(cacheNames => Promise.all(
         cacheNames
           .filter(cacheName =>
-            cacheName.startsWith("sudoku-offline-") && cacheName !== CACHE_NAME
+            cacheName.startsWith("qrgo-offline-") && cacheName !== CACHE_NAME
           )
           .map(cacheName => caches.delete(cacheName))
       ))
