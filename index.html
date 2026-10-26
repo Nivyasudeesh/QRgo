@@ -13,7 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#1a1a2e">
+    <meta name="theme-color" content="#1a1a2e" id="theme-color">
       <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
@@ -56,6 +56,10 @@
                 <a href="#history" class="nav-link" data-tab="history">History</a>
                 <a href="#features" class="nav-link">Features</a>
             </nav>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme">
+                <span class="theme-icon" aria-hidden="true">☀</span>
+                <span class="theme-label">Light mode</span>
+            </button>
         </div>
     </header>
 

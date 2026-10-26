@@ -22,11 +22,48 @@
     --shadow-glow: 0 0 20px rgba(255, 230, 0, 0.4);
     --gradient: linear-gradient(135deg, #FFE600 0%, #FFCC00 100%);
     --gradient-text: linear-gradient(135deg, #FFE600 20%, #FFFFFF 80%);
+    --page-stripe-light: #050505;
+    --page-stripe-dark: #000000;
+    --header-background: rgba(15, 15, 35, 0.8);
+    --control-background: rgba(255, 255, 255, 0.05);
+    --control-background-hover: rgba(255, 255, 255, 0.08);
+    --control-background-subtle: rgba(255, 255, 255, 0.03);
+    --control-track: rgba(255, 255, 255, 0.1);
+    --preview-background: #1e1e3a;
+    --preview-checker: #2a2a4a;
+    --success-background: rgba(16, 185, 129, 0.1);
     --radius-sm: 2px;
     --radius-md: 4px;
     --radius-lg: 8px;
     --radius-xl: 12px;
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root[data-theme="light"] {
+    --primary: #887400;
+    --primary-dark: #8a7600;
+    --success: #887400;
+    --bg-dark: #f5f6f8;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f1f3f5;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    --border: #d1d5db;
+    --border-hover: #887400;
+    --shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 8px 40px rgba(15, 23, 42, 0.12);
+    --gradient-text: linear-gradient(135deg, #887400 20%, #1f2937 80%);
+    --page-stripe-light: #f3f4f6;
+    --page-stripe-dark: #ffffff;
+    --header-background: rgba(255, 255, 255, 0.9);
+    --control-background: rgba(15, 23, 42, 0.04);
+    --control-background-hover: rgba(15, 23, 42, 0.07);
+    --control-background-subtle: rgba(15, 23, 42, 0.025);
+    --control-track: rgba(15, 23, 42, 0.12);
+    --preview-background: #e5e7eb;
+    --preview-checker: #d1d5db;
+    --success-background: rgba(16, 185, 129, 0.12);
 }
 
 *,
@@ -50,10 +87,10 @@ body {
     overflow-x: hidden;
     /* Industrial diagonal stripe pattern */
     background-image: repeating-linear-gradient(45deg,
-            #050505 0px,
-            #050505 2px,
-            #000000 2px,
-            #000000 20px);
+            var(--page-stripe-light) 0px,
+            var(--page-stripe-light) 2px,
+            var(--page-stripe-dark) 2px,
+            var(--page-stripe-dark) 20px);
 }
 
 /* ===== Background Animation ===== */
@@ -120,7 +157,7 @@ body {
     right: 0;
     z-index: 1000;
     padding: 16px 0;
-    background: rgba(15, 15, 35, 0.8);
+    background: var(--header-background);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
 }
@@ -179,6 +216,37 @@ body {
     height: 2px;
     background: var(--gradient);
     border-radius: 2px;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--control-background);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary);
+    background: var(--control-background-hover);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.theme-icon {
+    color: var(--primary);
+    font-size: 1.1rem;
+    line-height: 1;
 }
 
 /* ===== Hero ===== */
@@ -329,7 +397,7 @@ body {
 .input-field {
     width: 100%;
     padding: 14px 18px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--control-background);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     color: var(--text-primary);
@@ -357,7 +425,7 @@ body {
 .shape-btn {
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--control-background);
     border: 2px solid var(--border);
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -369,7 +437,7 @@ body {
 
 .shape-btn:hover {
     border-color: var(--border-hover);
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--control-background-hover);
 }
 
 .shape-btn.active {
@@ -381,7 +449,7 @@ body {
 .type-selector {
     display: flex;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--control-background-subtle);
     padding: 4px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
@@ -407,7 +475,7 @@ body {
 }
 
 .type-btn:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--control-background);
     color: var(--text-primary);
 }
 
@@ -518,7 +586,7 @@ body {
 .toggle-slider {
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--control-track);
     border-radius: 50px;
     transition: var(--transition);
 }
@@ -571,7 +639,7 @@ body {
 
 .file-label {
     padding: 12px 20px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--control-background);
     border: 2px dashed var(--border);
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -611,7 +679,7 @@ body {
     flex: 1;
     height: 6px;
     -webkit-appearance: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--control-track);
     border-radius: 3px;
     outline: none;
 }
@@ -637,7 +705,7 @@ body {
 .select-field {
     width: 100%;
     padding: 14px 18px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--control-background);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     color: var(--text-primary);
@@ -693,20 +761,20 @@ body {
     padding: 24px;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: #1e1e3a;
+    background: var(--preview-background);
 }
 
 .checkered-bg {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(45deg, #2a2a4a 25%, transparent 25%),
-        linear-gradient(-45deg, #2a2a4a 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #2a2a4a 75%),
-        linear-gradient(-45deg, transparent 75%, #2a2a4a 75%);
+        linear-gradient(45deg, var(--preview-checker) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--preview-checker) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--preview-checker) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--preview-checker) 75%);
     background-size: 16px 16px;
     background-position: 0 0, 0 8px, 8px -8px, -8px 0;
-    background-color: #1e1e3a;
+    background-color: var(--preview-background);
     opacity: 0.5;
 }
 
@@ -727,7 +795,7 @@ body {
     gap: 8px;
     margin-top: 16px;
     padding: 12px;
-    background: rgba(16, 185, 129, 0.1);
+    background: var(--success-background);
     border-radius: var(--radius-md);
 }
 
@@ -776,7 +844,7 @@ body {
 
 .download-btn {
     padding: 16px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--control-background);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     color: var(--text-primary);
@@ -1030,12 +1098,12 @@ body {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--control-background);
     color: var(--text-primary);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--control-track);
 }
 
 /* ===== Responsive ===== */
@@ -1086,7 +1154,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3,calc((100vw/3) - 46px));
     gap: 8px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--control-background-subtle);
     padding: 4px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
