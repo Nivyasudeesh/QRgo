@@ -7,6 +7,7 @@ QRgo is a powerful, customizable, and aesthetically pleasing QR code generator b
 ## 🌟 Features
 
 ### 🎨 Advanced Customization
+- **Themes**: Switch between dark and light appearance; your choice is saved in this browser.
 - **Shapes**: Choose from Square, Rounded, Dots, Diamond, Leaf, and Fluid module styles.
 - **Colors**: Customize foreground and background colors.
 - **Gradients**: support for beautiful linear gradients.

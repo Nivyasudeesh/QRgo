@@ -24,10 +24,37 @@ class QRGenerator {
     }
 
     init() {
+        this.initThemeToggle();
         this.bindEvents();
         this.generateQR();
         this.renderHistory();
         this.showToast('Welcome to QRgo!');
+    }
+
+    initThemeToggle() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        const themeLabel = themeToggle.querySelector('.theme-label');
+        const themeColor = document.getElementById('theme-color');
+        const savedTheme = localStorage.getItem('qrgo-theme');
+
+        const applyTheme = (theme) => {
+            const isLight = theme === 'light';
+            const nextTheme = isLight ? 'dark' : 'light';
+            document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
+            themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+            themeToggle.setAttribute('aria-pressed', String(isLight));
+            themeIcon.textContent = isLight ? '☾' : '☀';
+            themeLabel.textContent = `${nextTheme.charAt(0).toUpperCase()}${nextTheme.slice(1)} mode`;
+            themeColor.content = isLight ? '#f5f6f8' : '#1a1a2e';
+        };
+
+        applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('qrgo-theme', nextTheme);
+            applyTheme(nextTheme);
+        });
     }
 
     bindEvents() {
